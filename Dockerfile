@@ -28,7 +28,7 @@ RUN apk add --no-cache --virtual .build-deps \
     libtool \
     libxml2-dev \
     postgresql-dev \
-    sqlite-dev
+    sqlite-devvim 
 
 # Install production dependencies
 RUN apk add --no-cache \
@@ -46,7 +46,9 @@ RUN apk add --no-cache \
     nodejs-npm \
     openssh-client \
     postgresql-libs \
-    rsync
+    rsync \
+    imap-dev \
+    openssl-dev
 
 # Install PECL and PEAR extensions
 RUN pecl install imagick
@@ -67,7 +69,11 @@ RUN docker-php-ext-install \
     xml \
     gd \
     zip \
-    bcmath
+    bcmath \
+    imap
+
+# Install Imap
+RUN docker-php-ext-enable imap && docker-php-ext-configure imap --with-imap-ssl
 
 # Install composer
 RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
