@@ -75,6 +75,9 @@ RUN docker-php-ext-install \
 # Install Imap
 RUN docker-php-ext-enable imap && docker-php-ext-configure imap --with-imap-ssl
 
+# Install supervisor
+RUN apk add --no-cache supervisor
+
 # Install composer
 RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
 ENV COMPOSER_ALLOW_SUPERUSER=1
