@@ -48,7 +48,8 @@ RUN apk add --no-cache \
     postgresql-libs \
     rsync \
     imap-dev \
-    openssl-dev
+    openssl-dev \
+    logrotate 
 
 # Install PECL and PEAR extensions
 RUN pecl install imagick
