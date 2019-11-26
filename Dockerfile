@@ -49,7 +49,8 @@ RUN apk add --no-cache \
     rsync \
     imap-dev \
     openssl-dev \
-    logrotate 
+    logrotate \
+    libmcrypt-dev
 
 # Install PECL and PEAR extensions
 RUN pecl install imagick
@@ -79,8 +80,7 @@ RUN docker-php-ext-enable imap && docker-php-ext-configure imap --with-imap-ssl
 
 # Install Redis
 RUN apk add --no-cache \
-		$PHPIZE_DEPS \
-		openssl-dev
+		$PHPIZE_DEPS
 RUN pecl install redis && docker-php-ext-enable redis
 
 # Install supervisor
