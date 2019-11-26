@@ -71,6 +71,7 @@ RUN docker-php-ext-install \
     gd \
     zip \
     bcmath \
+    sockets \
     imap
 
 # Install Imap
