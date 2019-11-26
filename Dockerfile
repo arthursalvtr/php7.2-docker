@@ -76,6 +76,12 @@ RUN docker-php-ext-install \
 # Install Imap
 RUN docker-php-ext-enable imap && docker-php-ext-configure imap --with-imap-ssl
 
+# Install Redis
+RUN apk add --no-cache \
+		$PHPIZE_DEPS \
+		openssl-dev
+RUN pecl install redis && docker-php-ext-enable redis
+
 # Install supervisor
 RUN apk add --no-cache supervisor
 
